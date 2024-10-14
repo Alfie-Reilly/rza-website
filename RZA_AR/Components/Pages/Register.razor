@@ -1,5 +1,48 @@
-﻿<h3>Register</h3>
+﻿@using RZA_AR.Models
+@page "/Register"
+@rendermode InteractiveServer
+
+<h3>Register</h3>
+
+<div>
+    <label>First Name</label>
+    <input type="text" @bind-value=customer.Firstname>
+</div>
+
+<div>
+    <label>Last Name</label>
+    <input type="text" @bind-value=customer.Lastname>
+</div>
+
+<div>
+    <label>Username</label>
+    <input type="text" @bind-value=customer.Username>
+</div>
+
+<div>
+    <label>Password</label>
+    <input type="text" @bind-value=customer.Password>
+</div>
+
+<div>
+    <label>Email</label>
+    <input type="text" @bind-value=customer.Email>
+</div>
+
+<div>
+    <button @oneclick=testbutton>Register</button>
+</div>
 
 @code {
+    private Customer customer = new Customer();
+
+    private async Task testbutton()
+    {
+        Console.WriteLine(customer.Username);
+        Console.WriteLine(customer.Password);
+        Console.WriteLine(customer.Firstname);
+        Console.WriteLine(customer.Lastname);
+        Console.WriteLine(customer.Email);
+    }
 
 }
