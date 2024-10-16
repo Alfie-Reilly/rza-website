@@ -5,32 +5,35 @@
 <h3>Book Zoo Tickets Here</h3>
 
 <div>
-    <label>First Name</label>
-    <input type="text" @bind-value=customer.Firstname>
+    <label>Adult Ticket: </label>
+    <label>$32.99   </label>
+    <button @oneclick=testbutton>-</button>
+    <button @oneclick=testbutton>+</button>
 </div>
 
 <div>
-    <label>Last Name</label>
-    <input type="text" @bind-value=customer.Lastname>
+    <label>Child Ticket: </label>
+    <label>$27.99   </label>
+    <button @oneclick=testbutton>-</button>
+    <button @oneclick=testbutton>+</button>
 </div>
 
 <div>
-    <label>Username</label>
-    <input type="text" @bind-value=customer.Username>
+    <label>Student/Senior Ticket: </label>
+    <label>$31.99   </label>
+    <button @oneclick=testbutton>-</button>
+    <button @oneclick=testbutton>+</button>
 </div>
 
 <div>
-    <label>Password</label>
-    <input type="text" @bind-value=customer.Password>
+    <label>Under 3 Ticket: </label>
+    <label>*FREE*   </label>
+    <button @oneclick=testbutton>-</button>
+    <button @oneclick=testbutton>+</button>
 </div>
 
 <div>
-    <label>Email</label>
-    <input type="text" @bind-value=customer.Email>
-</div>
-
-<div>
-    <button @oneclick=testbutton>Register</button>
+    <button @oneclick=testbutton>Checkout</button>
 </div>
 
 @code {
