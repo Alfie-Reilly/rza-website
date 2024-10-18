@@ -1,0 +1,32 @@
+﻿@page "/Login"
+@using RZA_AR.Models
+@rendermode InteractiveServer
+
+<h3>Login HELLO</h3>
+
+
+<div>
+    <label>Username</label>
+    <input type="text" @bind=customer.Username>
+</div>
+
+<div>
+    <label>Password</label>
+    <input type="text" @bind=customer.Password>
+</div>
+
+<div>
+    <button @oneclick=testbutton>Log in</button>
+</div>
+
+@code {
+    private Customer customer = new Customer();
+
+    private async Task testbutton()
+    {
+        Console.WriteLine(customer.Username);
+        Console.WriteLine(customer.Password);
+        Console.WriteLine("Button was clicked");
+    }
+
+}

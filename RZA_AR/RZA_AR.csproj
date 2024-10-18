@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\Hotel.razor" />
     <Content Remove="Components\Pages\Hotel_tickets.razor" />
   </ItemGroup>
 
@@ -20,6 +21,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MudBlazor" Version="7.12.1" />
+    <PackageReference Include="MySql.Data" Version="9.1.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
   </ItemGroup>
 
@@ -28,11 +31,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Pages\Hotel.razor" />
     <_ContentIncludedByDefault Remove="Components\Pages\Hotel_tickets.razor" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Components\Pages\Hotel.razor" />
     <None Include="Components\Pages\Hotel_tickets.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\Hotel.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\NewFolder\" />
   </ItemGroup>
 
 </Project>

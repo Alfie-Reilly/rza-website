@@ -1,6 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 using RZA_AR.Components;
 using RZA_AR.Models;
+using RZA_AR.Services;
+using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
+using Org.BouncyCastle.Utilities.Encoders;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics.Metrics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace RZA_AR
 {
@@ -18,6 +36,7 @@ namespace RZA_AR
             options.UseMySql(builder.Configuration.GetConnectionString("MySqlConnection"),
             new MySqlServerVersion(new Version(8, 0, 29))));
 
+            builder.Services.AddScoped<CustomerService>();
 
             var app = builder.Build();
 
@@ -41,3 +60,5 @@ namespace RZA_AR
         }
     }
 }
+
+
