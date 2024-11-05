@@ -1,8 +1,11 @@
 ﻿@page "/Login"
 @using RZA_AR.Models
+@using RZA_AR.utilities
+@using RZA_AR.Services
 @rendermode InteractiveServer
 @inject RZA_AR.Services.CustomerService CustomerService
 @inject NavigationManager NavigationManager
+@inject UserSession UserSession
 
 <h3>Login</h3>
 
@@ -36,6 +39,7 @@
         }
         else
         {
+            UserSession.UserId = newCustomer.CustomerId;
             NavigationManager.NavigateTo("/account");
         }
     }

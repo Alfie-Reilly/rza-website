@@ -18,6 +18,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using RZA_AR.utilities;
 
 
 namespace RZA_AR
@@ -37,6 +38,8 @@ namespace RZA_AR
             new MySqlServerVersion(new Version(8, 0, 29))));
 
             builder.Services.AddScoped<CustomerService>();
+            builder.Services.AddScoped<UserSession>();
+            builder.Services.AddSingleton<UserSession>();
 
             var app = builder.Build();
 
