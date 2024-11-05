@@ -22,6 +22,13 @@ namespace RZA_AR.Services
             var result = await _context.Customers.FirstOrDefaultAsync(c => c.Username == username);
             return result != null;
         }
+
+        public async Task<Customer?> LogIn(Customer customer)
+        {
+            return await _context.Customers.FirstOrDefaultAsync(
+                c => c.Username == customer.Username &&
+                c.Password == customer.Password);
+        }
     }
 }
 
