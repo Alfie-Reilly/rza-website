@@ -1,6 +1,52 @@
 ﻿@page "/"
+@using RZA_AR.Models
+@using RZA_AR.Services
 
 <PageTitle>Home</PageTitle>
 
-<h1>RZA Zoo</h1>
-The zooiest of all zoos
+<h1>Welcome to RZA Zoo!</h1>
+
+<div class="Home-page">
+    <h3 class="home-title">Experience the wonders of the animal kingdom! <i class="bi bi-paw-fill"></i></h3>
+    <div class="home-container"> 
+        <img src="https://i.assetzen.net/i/Lh0UyocgJepA/w:1200/h:808/q:70.jpg" alt="orangutan image" class="background-image">
+        <div class="text-overlay">
+            Plan your visit
+        </div>
+    </div>
+ </div>
+
+<style>
+    .home-page{
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .home-container{
+        position: relative;
+        display: inline-block;
+        width: 80%
+    }
+
+    .background-image {
+        width: 70%; 
+        height: auto; 
+        border-radius: 10px; /* Adds rounded corners to the image */
+        display: block;
+    }
+
+    .text-overlay {
+        position: absolute; 
+        bottom: 20px; 
+        right: 20px; 
+        background-color: rgba(0, 100, 0, 0.7); 
+        color: #fff; 
+        padding: 10px 15px;
+        font-weight: bold; 
+        border-radius: 5px; 
+    }
+    .home-title{
+        font-size: 1.5rem; /* changes the font size of the title */
+        margin-bottom: 15px; /* creates space between title and the next thing on the page*/
+    }
+</style>

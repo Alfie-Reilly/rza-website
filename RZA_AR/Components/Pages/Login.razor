@@ -29,6 +29,13 @@
 @code {
     private Customer newCustomer = new Customer();
     private string password;
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserSession.UserId != 0)
+        {
+            NavigationManager.NavigateTo("/account");
+        }
+    }
 
     private async Task HandleValidSubmit()
     {

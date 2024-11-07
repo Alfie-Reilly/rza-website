@@ -3,43 +3,47 @@
 @using RZA_AR.Services
 @inject CustomerService CustomerService
 @rendermode InteractiveServer
+@inject NavigationManager NavigationManager
 
-<div class="register-page">
-    <h3 class="register-title">Register: <i class="bi bi-paw-fill"></i></h3>
-    <div class="register-container">
-        <img src="https://skybirdsales.co.uk/wp-content/uploads/2021/09/Lorikeet-Rainbow.jpg" alt="Lorikeet Rainbow" class="background-image">
-        <div class="form-overlay">
-            <div class="form-group">
-                <label>First Name</label>
-                <input @bind=newCustomer.Firstname>
+
+
+    <div class="register-page">
+        <h3 class="register-title">Register: <i class="bi bi-paw-fill"></i></h3>
+        <div class="register-container">
+            <img src="https://skybirdsales.co.uk/wp-content/uploads/2021/09/Lorikeet-Rainbow.jpg" alt="Lorikeet Rainbow" class="background-image">
+            <div class="form-overlay">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input @bind=newCustomer.Firstname>
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input @bind=newCustomer.Lastname>
+                </div>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input @bind=newCustomer.Username>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input @bind=newCustomer.Password>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input>
+                </div>
+
+                <button class="register-button" @onclick=@RegisterCustomer>
+                    Register <i class="bi bi-arrow-right-circle"></i>
+                </button>
             </div>
-
-            <div class="form-group">
-                <label>Last Name</label>
-                <input @bind=newCustomer.Lastname>
-            </div>
-
-            <div class="form-group">
-                <label>Username</label>
-                <input @bind=newCustomer.Username>
-            </div>
-
-            <div class="form-group">
-                <label>Password</label>
-                <input @bind=newCustomer.Password>
-            </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <input>
-            </div>
-
-            <button class="register-button" @onclick=@RegisterCustomer>
-                Register <i class="bi bi-arrow-right-circle"></i>
-            </button>
         </div>
     </div>
-</div>
+
 
 <style>
     .register-page {
@@ -47,7 +51,7 @@
         color: white;
         text-align: left;
         padding: 20px;
-        background-color: #a7cc4b; /* Matches the color in the image */
+        background-color: #a7cc4b;
     }
 
     .register-title {
@@ -74,7 +78,7 @@
         position: absolute;
         top: 20px;
         left: 20px;
-        background-color: rgba(0, 70, 0, 0.6); /* Dark green with transparency */
+        background-color: rgba(0, 70, 0, 0.6); /*Dark green with transparency */
         padding: 20px;
         border-radius: 10px;
         width: 250px;
@@ -97,13 +101,15 @@
         font-weight: bold;
     }
 
-        .register-button i {
-            margin-left: 5px;
+    .register-button i {
+        margin-left: 5px;
         }
 </style>
 
 @code {
     private Customer newCustomer = new Customer();
+
+
 
     private async Task RegisterCustomer()
     {
