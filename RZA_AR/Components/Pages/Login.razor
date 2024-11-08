@@ -1,53 +1,99 @@
 ﻿@page "/Login"
 @using RZA_AR.Models
-@using RZA_AR.utilities
-@using RZA_AR.Services
 @rendermode InteractiveServer
-@inject RZA_AR.Services.CustomerService CustomerService
-@inject NavigationManager NavigationManager
-@inject UserSession UserSession
-
 <h3>Login</h3>
 
-<EditForm Model="newCustomer" OnValidSubmit="HandleValidSubmit" FormName="LoginForm">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+<div class="Login-page">
+    <h3 class="Login-title">Login: <i class="bi bi-paw-fill"></i></h3>
+    <div class="login-container">
+        <img src="https://images.pexels.com/photos/2937067/pexels-photo-2937067.jpeg?auto=compress&cs=tinysrgb&w=400" alt="butterfly" class="background-image">
+        <div class="form overlay">
+            <div class="from group">
+                <label>Username</label>
+                <input type="text" @bind=customer.Username>
+            </div>
 
-    <div>
-        <label>Username</label>
-        <InputText @bind-Value="newCustomer.Username" />
+            <div class="from group">
+                <label>Password</label>
+                <input type="text" @bind=customer.Password>
+            </div>
+
+            <button class="login-button" @onclick=@testbutton>
+                Login <i class="bi bi-arrow-right-circle"></i>
+            </button>
+        </div>
     </div>
+</div>
 
-    <div>
-        <label>Password</label>
-        <InputText @bind-Value="password" type="password" />
-    </div>
 
-    <button type="submit">Log In</button>
-</EditForm>
-
-@code {
-    private Customer newCustomer = new Customer();
-    private string password;
-    protected override async Task OnInitializedAsync()
-    {
-        if (UserSession.UserId != 0)
-        {
-            NavigationManager.NavigateTo("/account");
-        }
+<style>
+    .Login-page {
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: left;
+        padding: 20px;
+        background-color: #a7cc4b;
     }
 
-    private async Task HandleValidSubmit()
+    .Login-title {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .login-container {
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+        background-color: #a7cc4b;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .background-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .form-overlay {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(0, 70, 0, 0.6); /*Dark green with transparency */
+        padding: 20px;
+        border-radius: 10px;
+        width: 250px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .login-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #005f20; /* Dark green */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+        .login-button i {
+            margin-left: 5px;
+        }
+</style>
+
+
+@code {
+    private Customer customer = new Customer();
+    private async Task testbutton()
     {
-        newCustomer = await CustomerService.LogIn(newCustomer);
-        if (newCustomer == null)
-        {
-            Console.WriteLine("could not log in");
-        }
-        else
-        {
-            UserSession.UserId = newCustomer.CustomerId;
-            NavigationManager.NavigateTo("/account");
-        }
+        Console.WriteLine(customer.Username);
+        Console.WriteLine(customer.Password);
+        Console.WriteLine("Button was clicked");
     }
 }
