@@ -4,37 +4,119 @@
 
 <h3>Book Zoo Tickets Here</h3>
 
-<div>
-    <label>Adult Ticket: </label>
-    <label>$32.99   </label>
-    <button @oneclick=testbutton>-</button>
-    <button @oneclick=testbutton>+</button>
+<div class="tickets-page">
+    <h3 class="tickets-title">Book Zoo Tickets: <i class="bi bi-paw-fill"></i></h3>
+    <div class="tickets-container">
+        <img src="https://uhdwallpapers.org/uploads/converted/18/03/21/wild-giraffe-in-african-safari-2048x2048_64898-mt-90.webp" alt="giraffe image" class="background-image">
+        <div class="form-overlay">
+            <div class="form-group">
+                <label>Adult Ticket: </label>
+                <label>$32.99   </label>
+                <button @oneclick=testbutton>-</button>
+                <button @oneclick=testbutton>+</button>
+            </div>
+
+            <div class="form-group">
+                <label>Child Ticket: </label>
+                <label>$27.99   </label>
+                <button @oneclick=testbutton>-</button>
+                <button @oneclick=testbutton>+</button>
+            </div>
+
+            <div class="form-group">
+                <label>Student/Senior Ticket: </label>
+                <label>$31.99   </label>
+                <button @oneclick=testbutton>-</button>
+                <button @oneclick=testbutton>+</button>
+            </div>
+
+            <div class="form-group">
+                <label>Under 3 Ticket: </label>
+                <label>*FREE*   </label>
+                <button @oneclick=testbutton>-</button>
+                <button @oneclick=testbutton>+</button>
+            </div>
+
+            <button class="Checkout-button">
+                Checkout
+            </button>
+
+
+        </div>
+    </div>
 </div>
 
-<div>
-    <label>Child Ticket: </label>
-    <label>$27.99   </label>
-    <button @oneclick=testbutton>-</button>
-    <button @oneclick=testbutton>+</button>
-</div>
 
-<div>
-    <label>Student/Senior Ticket: </label>
-    <label>$31.99   </label>
-    <button @oneclick=testbutton>-</button>
-    <button @oneclick=testbutton>+</button>
-</div>
 
-<div>
-    <label>Under 3 Ticket: </label>
-    <label>*FREE*   </label>
-    <button @oneclick=testbutton>-</button>
-    <button @oneclick=testbutton>+</button>
-</div>
+<style>
+    .tickets-page {
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: left;
+        padding: 20px;
+        background-color: #a7cc4b;
+    }
 
-<div>
-    <button @oneclick=testbutton>Checkout</button>
-</div>
+    .tickets-title {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .tickets-container {
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+        background-color: #a7cc4b;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .background-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .form-overlay {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(0, 70, 0, 0.6); /*Dark green with transparency */
+        padding: 20px;
+        border-radius: 10px;
+        width: 325px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .checkout-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #005f20; /* Dark green */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+        .checkout-button i {
+            margin-left: 5px;
+        }
+</style>
+
+
+
+
+
+
+
+
+
 
 @code {
     private Customer customer = new Customer();
