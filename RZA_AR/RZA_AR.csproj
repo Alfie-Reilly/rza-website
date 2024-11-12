@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Content Remove="Components\Pages\Account.razor" />
+    <Content Remove="Components\Pages\Book_hotel_stay.razor" />
     <Content Remove="Components\Pages\Hotel.razor" />
     <Content Remove="Components\Pages\Hotel_tickets.razor" />
   </ItemGroup>
@@ -33,12 +34,14 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Components\Pages\Account.razor" />
+    <_ContentIncludedByDefault Remove="Components\Pages\Book_hotel_stay.razor" />
     <_ContentIncludedByDefault Remove="Components\Pages\Hotel.razor" />
     <_ContentIncludedByDefault Remove="Components\Pages\Hotel_tickets.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Components\Pages\Account.razor" />
+    <None Include="Components\Pages\Book_hotel_stay.razor" />
     <None Include="Components\Pages\Hotel.razor" />
     <None Include="Components\Pages\Hotel_tickets.razor" />
   </ItemGroup>
@@ -53,6 +56,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Components\Pages\Account.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Pages\Book_hotel_stay.razor" />
   </ItemGroup>
 
 </Project>

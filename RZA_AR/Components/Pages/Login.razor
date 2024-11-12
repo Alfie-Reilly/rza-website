@@ -3,19 +3,22 @@
 @rendermode InteractiveServer
 <h3>Login</h3>
 
-<div class="Login-page">
-    <h3 class="Login-title">Login: <i class="bi bi-paw-fill"></i></h3>
+<div class="login-page">
+    <h3 class="login-title">Login: <i class="bi bi-paw-fill"></i></h3>
     <div class="login-container">
-        <img src="https://images.pexels.com/photos/2937067/pexels-photo-2937067.jpeg?auto=compress&cs=tinysrgb&w=400" alt="butterfly" class="background-image">
-        <div class="form overlay">
-            <div class="from group">
+        <!-- Background image of butterfly -->
+        <img src="https://animalsymbo.com/wp-content/uploads/2024/09/what-does-a-gecko-mean-spiritually-1024x536.jpg" alt="gecko image" class="background-image">
+
+        <!-- Form overlay aligned to the left -->
+        <div class="form-overlay">
+            <div class="form-group">
                 <label>Username</label>
                 <input type="text" @bind=customer.Username>
             </div>
 
-            <div class="from group">
+            <div class="form-group">
                 <label>Password</label>
-                <input type="text" @bind=customer.Password>
+                <input type="password" @bind=customer.Password>
             </div>
 
             <button class="login-button" @onclick=@testbutton>
@@ -25,9 +28,8 @@
     </div>
 </div>
 
-
 <style>
-    .Login-page {
+    .login-page {
         font-family: Arial, sans-serif;
         color: white;
         text-align: left;
@@ -35,7 +37,7 @@
         background-color: #a7cc4b;
     }
 
-    .Login-title {
+    .login-title {
         margin-bottom: 10px;
         font-weight: bold;
     }
@@ -47,22 +49,31 @@
         background-color: #a7cc4b;
         border-radius: 15px;
         overflow: hidden;
+        display: flex;
+        align-items: center;
     }
 
+    /* Position the background image */
     .background-image {
         width: 100%;
         height: auto;
         display: block;
+        border-radius: 0 15px 15px 0; /* Rounded edges on the right side */
     }
 
+    /* Form overlay styling */
     .form-overlay {
         position: absolute;
-        top: 20px;
+        top: 200px;
         left: 20px;
-        background-color: rgba(0, 70, 0, 0.6); /*Dark green with transparency */
+        background-color: rgba(0, 70, 0, 0.6); /* Dark green with transparency */
         padding: 20px;
-        border-radius: 10px;
+        border-radius: 10px 10px 10px 10px; /* Rounded edges on the left side */
         width: 250px;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .form-group {
@@ -86,7 +97,6 @@
             margin-left: 5px;
         }
 </style>
-
 
 @code {
     private Customer customer = new Customer();
