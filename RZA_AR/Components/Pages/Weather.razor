@@ -18,12 +18,16 @@
             <div class="form-overlay">
                  <div class="form-group">
                      <label>Stay duration:</label>
-                     <input />
+                     <InputDate @bind-Value="StayDate" Min="@DateTime.Today" /> 
                  </div>
 
-               <div class="form-group">
+               <div class="select-group">
                    <label>Room type: </label>
-                   <input />
+                    <select>
+                          <option value="Single">Single</option>
+                          <option value="Double">Double</option>
+                          <option value="Accessible">Accessible</option>
+                    </select>
                </div>
 
               <div class="form-group">
@@ -80,9 +84,18 @@
         width: 250px;
     }
 
-    .form-group {
+    .form-group, .select-group {
         margin-bottom: 15px;
+        padding: 10px;
     }
+
+    select, input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
 
      .checkout-button {
         display: flex;
@@ -104,5 +117,5 @@
 
 
 @code {
-
+    DateTime StayDate { get; set; } = DateTime.Today; 
 }
