@@ -15,7 +15,7 @@ public partial class TlS2302631RzaZooContext : DbContext
         : base(options)
     {
     }
-    
+
     public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<Room> Rooms { get; set; }
@@ -25,7 +25,7 @@ public partial class TlS2302631RzaZooContext : DbContext
     public virtual DbSet<Zoobooking> Zoobookings { get; set; }
 
     //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      //  => optionsBuilder.UseMySql("name=MySqlConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
+    //    => optionsBuilder.UseMySql("name=MySqlConnection", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.29-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,9 +39,7 @@ public partial class TlS2302631RzaZooContext : DbContext
 
             entity.ToTable("customers");
 
-            entity.Property(e => e.CustomerId)
-                .ValueGeneratedNever()
-                .HasColumnName("customerID");
+            entity.Property(e => e.CustomerId).HasColumnName("customerID");
             entity.Property(e => e.Dob).HasColumnName("DOB");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
@@ -101,7 +99,7 @@ public partial class TlS2302631RzaZooContext : DbContext
             entity.HasOne(d => d.Customer).WithMany(p => p.Roombookings)
                 .HasForeignKey(d => d.CustomerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("roombookings_ibfk_1");
+                .HasConstraintName("cid");
 
             entity.HasOne(d => d.RoomNumberNavigation).WithMany(p => p.Roombookings)
                 .HasForeignKey(d => d.RoomNumber)

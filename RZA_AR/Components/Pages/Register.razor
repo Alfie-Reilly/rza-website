@@ -113,15 +113,6 @@
 
     private async Task RegisterCustomer()
     {
-        bool usernameTaken = await CustomerService.CheckUsernameExistsAsync(newCustomer.Username);
-        if (usernameTaken)
-        {
-            Console.WriteLine("username taken");
-        }
-        else
-        {
-            await CustomerService.AddCustomerAsync(newCustomer);
-            newCustomer = new Customer();
-        }
+        await CustomerService.AddCustomerAsync(newCustomer);
     }
 }

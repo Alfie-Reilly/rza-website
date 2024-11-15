@@ -1,64 +1,108 @@
 ﻿@page "/weather"
-@attribute [StreamRendering]
+@using RZA_AR.Models
+@using RZA_AR.Services
+@inject CustomerService CustomerService
+@rendermode InteractiveServer
+@inject NavigationManager NavigationManager
 
-<PageTitle>Weather</PageTitle>
+<PageTitle>Book Hotel Stay</PageTitle>
 
-<h1>Weather</h1>
 
-<p>This component demonstrates showing data.</p>
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+
+
+    <div class="hotel-page">
+        <h3 class="hotel-title">Book a hotel stay: <i class="bi bi-paw-fill"></i></h3>
+        <div class="hotel-container">
+           <img src="https://www.paigntonzoo.org.uk/wp-content/uploads/2021/04/Pigmy_Marmoset_21.06.2018_LR-2-1024x683.jpg.webp" alt="lil monkey image" class="background-image">
+            <div class="form-overlay">
+                 <div class="form-group">
+                     <label>Stay duration:</label>
+                     <input />
+                 </div>
+
+               <div class="form-group">
+                   <label>Room type: </label>
+                   <input />
+               </div>
+
+              <div class="form-group">
+                   <label>Total:</label>
+                   <input />
+              </div>
+
+             <button class="checkout-button">
+                Checkout
+                <i class="bi bi-arrow-right-circle"></i>
+             </button>
+           </div>
+        </div>
+    </div>
+
+
+<style>
+    .hotel-page {
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: left;
+        padding: 20px;
+        background-color: #a7cc4b;
+    }
+
+    .hotel-title {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+    .hotel-container {
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+        background-color: #a7cc4b;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .background-image {
+        width: 120%;
+        height: auto;
+        display: block;
+    }
+
+    .form-overlay {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(0, 70, 0, 0.6); /*Dark green with transparency */
+        padding: 20px;
+        border-radius: 10px;
+        width: 250px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+     .checkout-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #005f20; /* Dark green */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+     } 
+
+     .checkout-button i {
+            margin-left: 5px;
+     } 
+</style>
+
 
 @code {
-    private WeatherForecast[]? forecasts;
 
-    protected override async Task OnInitializedAsync()
-    {
-        // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
-
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
-    }
-
-    private class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
 }
