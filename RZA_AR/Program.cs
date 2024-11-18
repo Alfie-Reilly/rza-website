@@ -40,6 +40,9 @@ namespace RZA_AR
             builder.Services.AddScoped<CustomerService>();
             builder.Services.AddScoped<UserSession>();
             builder.Services.AddSingleton<UserSession>();
+            builder.Services.AddScoped<AttractionService>();
+
+
 
             var app = builder.Build();
 
