@@ -42,10 +42,12 @@ namespace RZA_AR
 
             builder.Services.AddScoped<CustomerService>();
             builder.Services.AddScoped<UserSession>();
-            builder.Services.AddScoped<UserSession>();
+            builder.Services.AddSingleton<UserSession>();
             builder.Services.AddScoped<AttractionService>();
             builder.Services.AddScoped<TicketService>();
             builder.Services.AddScoped<TicketbookingService>();
+            builder.Services.AddScoped<RoombookingService>();
+            builder.Services.AddScoped<RoomService>();
 
 
 

@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Components\Pages\Account.razor" />
     <Content Remove="Components\Pages\Book_hotel_stay.razor" />
     <Content Remove="Components\Pages\Hotel.razor" />
     <Content Remove="Components\Pages\Hotel_tickets.razor" />
@@ -40,7 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Components\Pages\Account.razor" />
     <None Include="Components\Pages\Book_hotel_stay.razor" />
     <None Include="Components\Pages\Hotel.razor" />
     <None Include="Components\Pages\Hotel_tickets.razor" />

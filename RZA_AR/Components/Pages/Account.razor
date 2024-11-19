@@ -9,7 +9,8 @@
 
 @rendermode InteractiveServer
 
-@page "/account"
+@page "/Account"
+
 
 <h3>Account</h3>
 
@@ -17,7 +18,7 @@
 
 @if (customer != null)
 {
-    <li>@customer.FirstName @customer.LastName</li>
+    <li>@customer.Firstname @customer.Lastname</li>
 }
 
 @if (rooms != null)
@@ -25,7 +26,7 @@
     <ul>
         @foreach (var room in rooms)
         {
-            <li>Room @room.RoomNumber: @room.RoomType for @room.Capacity people</li>
+            <li>Room @room.Roomnumber: @room.RoomType for @room.Capacity people</li>
         }
     </ul>
 }
@@ -36,7 +37,7 @@
         <select @bind=Roomnumber>
             @foreach (var room in rooms)
             {
-                <option value=@room.RoomNumber>@room.RoomType</option>
+                <option value=@room.Roomnumber>@room.RoomType</option>
 
             }
         </select>
@@ -98,6 +99,6 @@
         Console.WriteLine(Roomnumber);
         Room = await RoomService.GetRoomAsync(Roomnumber);
         await RoombookingService.AddRoombookingAsync(customer, Room, startDate, Days);
-        
+
     }
 }
