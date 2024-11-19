@@ -21,6 +21,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using RZA_AR.utilities;
 
 
+//scaffold-dbcontext name="MySqlConnection" pomelo.entityframeworkcore.mysql -outputdir Models -force
+
+
 namespace RZA_AR
 {
     public class Program
@@ -39,8 +42,10 @@ namespace RZA_AR
 
             builder.Services.AddScoped<CustomerService>();
             builder.Services.AddScoped<UserSession>();
-            builder.Services.AddSingleton<UserSession>();
+            builder.Services.AddScoped<UserSession>();
             builder.Services.AddScoped<AttractionService>();
+            builder.Services.AddScoped<TicketService>();
+            builder.Services.AddScoped<TicketbookingService>();
 
 
 

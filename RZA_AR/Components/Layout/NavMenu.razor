@@ -21,12 +21,20 @@
             margin-right: 8px; /* Space between icon and text */
             font-size: 1.5rem; /* Make icons larger */
         }
+
+        .navbar-logo img {
+            max-height: 40px; /* Adjust height as needed */
+            width: auto; 
+            border-radius: 15px 15px 15px 15px;
+        }
     </style>
 </head>
 <body>
     <div class="top-row ps-3 navbar navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">RZA_AR</a>
+            <a class="navbar-logo" href="">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFysYCPMHq2aYI8wQNqETp04ax0aAqvvRJQg&s" alt="RZA Logo">
+            </a>
         </div>
     </div>
 
@@ -43,6 +51,12 @@
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="Zoo_Tickets">
                     <span class="bi bi-plus-square-fill-nav-menu"></span> Book zoo tickets
+                </NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="tickets">
+                    <span class="bi bi-plus-square-fill-nav-menu"></span> Book tickets
                 </NavLink>
             </div>
 
