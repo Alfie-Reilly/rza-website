@@ -12,34 +12,131 @@
 
 <h3>Tickets</h3>
 
-@if (attractions != null)
-{
-    @foreach (Attraction attraction in attractions)
-    {
-        <div>
-            @attraction.Name: £@attraction.Price
-            <button @onclick="@(e => AddTicket(attraction.AttractionId))">add to basket</button>
+<div class="tickets-page">
+    <h3 class="tickets-title">Book Zoo Tickets: <i class="bi bi-paw-fill"></i></h3>
+    <div class="tickets-container">
+        <img src="https://uhdwallpapers.org/uploads/converted/18/03/21/wild-giraffe-in-african-safari-2048x2048_64898-mt-90.webp" alt="giraffe image" class="background-image">
+        <div class="form-overlay">
+            <div class="form-group">
+                @if (attractions != null)
+                {
+                    @foreach (Attraction attraction in attractions)
+                    {
+                        <div>
+                            @attraction.Name: £@attraction.Price
+                            <button @onclick="@(e => AddTicket(attraction.AttractionId))">add to basket</button>
+                        </div>
+                    }
+                    <label>Please select the date you will be visiting:</label>
+                    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate>
+                    <button @onclick=@BookTickets>Book Tickets</button>
+                }
+                else
+                {
+                    <div>no attractions</div>
+                }
+            </div>
+            <div class="form-group">
+                @if (tickets != null && tickets.Count != 0)
+                {
+                    @foreach (Ticket ticket in tickets)
+                    {
+                        <div>@ticket.TicketId, @ticket.AttractionId</div>
+                    }
+                }
+                else
+                {
+                    <div>Your tickets will show here...</div>
+                }
+            </div>
         </div>
-    }
-    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate>
-    <button @onclick=@BookTickets>Book Tickets</button>
-}
-else
-{
-    <div>no attractions</div>
-}
+    </div>
+</div>
 
-@if (tickets != null && tickets.Count != 0)
-{
-    @foreach (Ticket ticket in tickets)
-    {
-        <div>@ticket.TicketId, @ticket.AttractionId</div>
+
+
+
+
+<style>
+    .tickets-page {
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: left;
+        padding: 20px;
+        background-color: #a7cc4b;
     }
-}
-else
-{
-    <div>Your tickets will show here...</div>
-}
+
+    .tickets-title {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+    .tickets-container {
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+        background-color: #a7cc4b;
+        border-radius: 15px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column; /*stacks items vertically*/
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+    }
+
+    .background-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 0 15px 15px 0;
+    }
+
+    .form-overlay {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(0, 70, 0, 0.6); /* Dark green with transparency */
+        padding: 20px;
+        border-radius: 10px;
+        width: 250px; /* Adjust to fit the content without taking up too much space */
+    }
+
+    .form-group {
+        display: flex;
+        align-items: center;
+        align-items: flex-start;
+        gap: 15px;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        color: white;
+    }
+
+
+
+    .checkout-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #005f20; /* Dark green */
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .checkout-button:hover {
+        background-color: #004014; /* Darker green on hover */
+    }
+</style>
 
 @code {
     List<Attraction> attractions;
@@ -82,3 +179,4 @@ else
         }
     }
 }
+

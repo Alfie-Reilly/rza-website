@@ -9,38 +9,9 @@
     <div class="tickets-container">
         <img src="https://uhdwallpapers.org/uploads/converted/18/03/21/wild-giraffe-in-african-safari-2048x2048_64898-mt-90.webp" alt="giraffe image" class="background-image">
         <div class="form-overlay">
-            <div class="form-group">
-                <label>Adult Ticket:</label>
-                <span>$32.99</span>
-                <button @onclick=testbutton>-</button>
-                <button @onclick=testbutton>+</button>
-            </div>
+            <div group>
 
-            <div class="form-group">
-                <label>Child Ticket:</label>
-                <span>$27.99</span>
-                <button @onclick=testbutton>-</button>
-                <button @onclick=testbutton>+</button>
             </div>
-
-            <div class="form-group">
-                <label>Student/Senior Ticket:</label>
-                <span>$31.99</span>
-                <button @onclick=testbutton>-</button>
-                <button @onclick=testbutton>+</button>
-            </div>
-
-            <div class="form-group">
-                <label>Under 3 Ticket:</label>
-                <span>*FREE*</span>
-                <button @onclick=testbutton>- </button>
-                <button @onclick=testbutton>+</button>
-            </div>
-
-            <button class="checkout-button">
-                Checkout 
-                <i class="bi bi-arrow-right-circle"></i>
-            </button>
         </div>
     </div>
 </div>
@@ -95,9 +66,9 @@
         margin-bottom: 15px;
     }
 
-        .form-group label {
-            color: white;
-        }
+    .form-group label {
+         color: white;
+    }
 
     .checkout-button {
         display: flex;
@@ -120,13 +91,5 @@
 
 @code {
     private Customer customer = new Customer();
-
-    private async Task testbutton()
-    {
-        Console.WriteLine(customer.Username);
-        Console.WriteLine(customer.Password);
-        Console.WriteLine(customer.Firstname);
-        Console.WriteLine(customer.Lastname);
-        Console.WriteLine(customer.Email);
     }
 }
