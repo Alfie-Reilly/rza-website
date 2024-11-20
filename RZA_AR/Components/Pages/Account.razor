@@ -14,47 +14,125 @@
 
 <h3>Account</h3>
 
-<button @onclick="ShowUserId">Show User ID</button>
+<div class="account-page">
+    <h3 class="account-title">Account: <i class="bi bi-paw-fill"></i></h3>
+    <div class="account-container">
+        <img src="https://t3.ftcdn.net/jpg/00/26/71/82/240_F_26718274_TBMn85NCXbriCSYoJFvR31bA20eatZjD.jpg" alt="armadillo image" class="background-image">
+        <div class="form-overlay">
+            <button class="account-button">
+                <button @onclick="ShowUserId">Show User ID</button>
+            </button>
+                @if (customer != null)
+                {
+                    <li>@customer.Firstname @customer.Lastname</li>
+                }
+                @if (rooms != null)
+                {
+                    <ul>
+                        @foreach (var room in rooms)
+                        {
+                            <li>Room @room.Roomnumber: @room.RoomType for @room.Capacity people</li>
+                        }
+                    </ul>
+                }
 
-@if (customer != null)
-{
-    <li>@customer.Firstname @customer.Lastname</li>
-}
+                <div>
+                    @if (rooms != null)
+                    {
+                        <select @bind=Roomnumber>
+                            @foreach (var room in rooms)
+                            {
+                                <option value=@room.Roomnumber>@room.RoomType</option>
 
-@if (rooms != null)
-{
-    <ul>
-        @foreach (var room in rooms)
-        {
-            <li>Room @room.Roomnumber: @room.RoomType for @room.Capacity people</li>
-        }
-    </ul>
-}
+                            }
+                        </select>
+                    }
+                    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=startDate>
+                    <select @bind=Days>
+                        @for (int i = 1; i <= 7; i++)
+                        {
+                            <option value=@i>@i Days</option>
+                        }
+                    </select>
+                    <button @onclick=BookRoom>Book this room</button>
+                </div>
 
-<div>
-    @if (rooms != null)
-    {
-        <select @bind=Roomnumber>
-            @foreach (var room in rooms)
-            {
-                <option value=@room.Roomnumber>@room.RoomType</option>
+                <button class="account-button">
+                    <button @onclick=Logout>Log Out</button>
+                </button>
 
-            }
-        </select>
-    }
-    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=startDate>
-    <select @bind=Days>
-        @for (int i = 1; i <= 7; i++)
-        {
-            <option value=@i>@i Days</option>
-        }
-    </select>
-    <button @onclick=BookRoom>Book this room</button>
+                <div class="form-group">
+                    <a href="/bookings">My Bookings</a>
+                </div>
+                
+        </div>
+    </div>
 </div>
 
-<button @onclick=Logout>Log Out</button>
 
-<a href="/bookings">My Bookings</a>
+<style>
+    .account-page {
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: left;
+        padding: 20px;
+        background-color: #a7cc4b;
+    }
+
+    .account-title {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+    .account-container {
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+        background-color: #a7cc4b;
+        border-radius: 15px;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+
+    .background-image {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .form-overlay {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(0, 70, 0, 0.6); /*Dark green with transparency */
+        padding: 20px;
+        border-radius: 10px;
+        width: 250px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        background-color: white;
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+
+    .account-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #005f20; /* Dark green */
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+</style>
+
+
 
 @code {
     private Customer customer;
