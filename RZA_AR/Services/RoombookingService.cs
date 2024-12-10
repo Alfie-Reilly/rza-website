@@ -16,7 +16,7 @@ namespace RZA_AR.Services
             newRoombooking.RoomNumberNavigation = room;
             newRoombooking.CheckinDate = startDate;
             newRoombooking.CheckoutDate = startDate.AddDays(duration);
-            var temps = await _context.Roombookings.ToListAsync();
+            //var temps = await _context.Roombookings.ToListAsync();
 
             var temp = await _context.Roombookings.Where(r => r.CustomerId == customer.CustomerId &&
                                                          r.RoomNumber == room.Roomnumber &&

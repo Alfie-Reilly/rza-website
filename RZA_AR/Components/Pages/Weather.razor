@@ -1,14 +1,17 @@
 ﻿@page "/weather"
-@using RZA_AR.Models
+﻿@using RZA_AR.Models
 @using RZA_AR.Services
-@inject CustomerService CustomerService
-@rendermode InteractiveServer
+@using RZA_AR.utilities
+@inject AttractionService AttractionService
+@inject UserSession UserSession
 @inject NavigationManager NavigationManager
+@inject TicketbookingService TicketbookingService
+@inject TicketService TicketService
+@rendermode InteractiveServer
 
 <PageTitle>Book Hotel Stay</PageTitle>
 
-
-
+ 
 
 
     <div class="hotel-page">
@@ -16,14 +19,15 @@
         <div class="hotel-container">
            <img src="https://www.paigntonzoo.org.uk/wp-content/uploads/2021/04/Pigmy_Marmoset_21.06.2018_LR-2-1024x683.jpg.webp" alt="lil monkey image" class="background-image">
             <div class="form-overlay">
-                 <div class="form-group">
-                     <label>Stay duration:</label>
-                     <InputDate @bind-Value="StayDate" Min="@DateTime.Today" /> 
-                 </div>
+                <div class="form-group">
+                     <label>Stay duration:</label> 
+                     <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd")>  
+                </div>
 
                <div class="select-group">
                    <label>Room type: </label>
                     <select>
+                          <option value="Standard">Standard</option>
                           <option value="Single">Single</option>
                           <option value="Double">Double</option>
                           <option value="Accessible">Accessible</option>
@@ -101,7 +105,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #005f20; /* Dark green */
+        background-color: #007E42; /* Dark green */
         color: white;
         border: none;
         padding: 10px 15px;
@@ -113,9 +117,22 @@
      .checkout-button i {
             margin-left: 5px;
      } 
+
+     .checkout-button:hover {
+         background-color: #004014; /* Darker green on hover */
+     }
 </style>
 
 
 @code {
-    DateTime StayDate { get; set; } = DateTime.Today; 
+    DateOnly ticketDate;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserSession.UserId == 0)
+        {
+            NavigationManager.NavigateTo("/login");
+
+        }
+    }
 }

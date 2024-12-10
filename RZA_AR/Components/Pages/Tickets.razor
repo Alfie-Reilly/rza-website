@@ -22,12 +22,13 @@
                     {
                         <div>
                             @attraction.Name: £@attraction.Price
-                            <button @onclick="@(e => AddTicket(attraction.AttractionId))">add to basket</button>
+                            <button class="checkout-button" @onclick="@(e => AddTicket(attraction.AttractionId))">add to basket</button>
                         </div>
                     }
                     <label>Please select the date you will be visiting:</label>
-                    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate>
-                    <button @onclick=@BookTickets>Book Tickets</button>
+                    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=@ticketDate> //min value prevents users from selecting a date in the past when booking tickets 
+
+                    <button class="checkout-button" @onclick=@BookTickets>Book Tickets</button>
                 }
                 else
                 {
@@ -116,7 +117,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #005f20; /* Dark green */
+        background-color: #007E42; /* Dark green */
         color: white;
         border: none;
         padding: 10px 15px;
@@ -140,7 +141,7 @@
     {
         if (UserSession.UserId == 0)
         {
-            NavigationManager.NavigateTo("/");
+            NavigationManager.NavigateTo("/login");
             
         }
         else
