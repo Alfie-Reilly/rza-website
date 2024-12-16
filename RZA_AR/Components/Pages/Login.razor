@@ -20,8 +20,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Password:</label>
-                    <InputText @bind-Value="password" type="password" />
+                    <InputText @bind-Value="password" type="@passwordInputType" />
+                    <input type="checkbox" @onchange="TogglePasswordVisibility" /> Show Password
                 </div>
 
                 <button class="login-button">
@@ -108,6 +108,7 @@
 @code {
     private Customer newCustomer = new Customer();
     private string password;
+    private string passwordInputType = "password"; // Default to masked input
 
     private async Task HandleValidSubmit()
     {
@@ -123,4 +124,11 @@
             NavigationManager.NavigateTo("/Account");
         }
     }
+
+    private void TogglePasswordVisibility(ChangeEventArgs e)
+    {
+        bool isChecked = (bool)e.Value;
+        passwordInputType = isChecked ? "text" : "password";
+    }
+
 }
