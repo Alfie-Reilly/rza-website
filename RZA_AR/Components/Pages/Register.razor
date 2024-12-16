@@ -34,12 +34,17 @@
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input>
+                    <input @bind=newCustomer.Email>
                 </div>
 
                 <button class="register-button" @onclick=@RegisterCustomer>
                     Register <i class="bi bi-arrow-right-circle"></i>
                 </button>
+
+                @if (successMessage != null) 
+                {
+                    <div class="success-message">@successMessage</div> 
+                }
             </div>
         </div>
     </div>
@@ -109,14 +114,23 @@
     .register-button:hover {
         background-color: #004014; /* Darker green on hover */
     }
+
+    .success-message { 
+        color: #13e30b;
+        margin-top: 15px; 
+        font-weight: bold;
+    }
+
 </style>
 
 @code {
     
     private Customer newCustomer = new Customer();
+    private string successMessage;
 
     private async Task RegisterCustomer()
     {
         await CustomerService.AddCustomerAsync(newCustomer);
+        successMessage = "Your account has been successfully created!";
     }
 }
