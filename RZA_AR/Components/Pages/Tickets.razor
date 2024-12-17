@@ -48,6 +48,14 @@
                     <div>Your tickets will show here...</div>
                 }
             </div>
+
+            <div class="form-group">
+                @if (!string.IsNullOrEmpty(successMessage))
+                {
+                    <div class="success-message">@successMessage</div>
+                }
+            </div>
+
         </div>
     </div>
 </div>
@@ -130,6 +138,13 @@
     .checkout-button:hover {
         background-color: #004014; /* Darker green on hover */
     }
+
+    .success-message {
+        color: #13e30b;
+        font-weight: bold;
+        margin-top: 10px;
+        text-align: center;
+    }
 </style>
 
 @code {
@@ -137,6 +152,8 @@
     List<Ticket> tickets;
     DateOnly ticketDate;
     Ticketbooking newTicketbooking;
+    private string successMessage;
+
     protected override async Task OnInitializedAsync()
     {
         if (UserSession.UserId == 0)
@@ -161,6 +178,7 @@
     private async Task BookTickets()
     {
         //this one books all the tickets in the basket
+        successMessage = "";
         Ticketbooking newTicketbooking = new Ticketbooking();
         newTicketbooking.CustomerId = UserSession.UserId;
         newTicketbooking.Date = ticketDate;
@@ -171,6 +189,9 @@
             ticket.Ticketbooking = newTicketbooking;
             await TicketService.AddTicketAsync(ticket);
         }
+        successMessage = "Your tickets have been successfully booked!"; 
+        tickets.Clear(); // Optionally clear the ticket basket after booking
+
     }
 }
 
