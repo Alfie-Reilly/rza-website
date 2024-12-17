@@ -22,40 +22,6 @@
             <button class="account-button">
                 <button class="account-button" @onclick="ShowUserId">Show User ID</button>
             </button>
-                @if (customer != null)
-                {
-                    <li>@customer.Firstname @customer.Lastname</li>
-                }
-                @if (rooms != null)
-                {
-                    <ul>
-                        @foreach (var room in rooms)
-                        {
-                            <li>Room @room.Roomnumber: @room.RoomType for @room.Capacity people</li>
-                        }
-                    </ul>
-                }
-
-                <div>
-                    @if (rooms != null)
-                    {
-                        <select @bind=Roomnumber>
-                            @foreach (var room in rooms)
-                            {
-                                <option value=@room.Roomnumber>@room.RoomType</option>
-
-                            }
-                        </select>
-                    }
-                    <input type="date" min=@DateTime.Now.ToString("yyyy-MM-dd") @bind=startDate>
-                    <select @bind=Days>
-                        @for (int i = 1; i <= 7; i++)
-                        {
-                            <option value=@i>@i Days</option>
-                        }
-                    </select>
-                    <button @onclick=BookRoom>Book this room</button>
-                </div>
 
                 <button class="account-button">
                     <button @onclick=Logout>Log Out</button>
