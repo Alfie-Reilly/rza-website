@@ -6,6 +6,7 @@
 @inject NavigationManager NavigationManager
 @inject TicketbookingService TicketbookingService
 @inject TicketService TicketService
+@inject IJSRuntime JSRuntime
 @rendermode InteractiveServer
 
 @page "/tickets"
@@ -153,13 +154,13 @@
     DateOnly ticketDate;
     Ticketbooking newTicketbooking;
     private string successMessage;
+    private bool showLoginAlert = false;
 
     protected override async Task OnInitializedAsync()
     {
         if (UserSession.UserId == 0)
         {
-            NavigationManager.NavigateTo("/login");
-            
+            showLoginAlert = true;
         }
         else
         {
@@ -168,6 +169,17 @@
             newTicketbooking = new Ticketbooking();
         }
     }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (showLoginAlert) // Check if the alert needs to be shown
+        {
+            showLoginAlert = false; // Reset the flag
+            await JSRuntime.InvokeVoidAsync("alert", "Please log in to access this page.");
+            NavigationManager.NavigateTo("/login");
+        }
+    }
+
     private void AddTicket(int attractionId)
     {
         Console.WriteLine("AddTicket button was clicked");
