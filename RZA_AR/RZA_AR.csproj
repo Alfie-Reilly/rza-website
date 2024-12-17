@@ -60,4 +60,10 @@
     <UpToDateCheckInput Remove="Components\Pages\Book_hotel_stay.razor" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Pages\Login - Copy.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>

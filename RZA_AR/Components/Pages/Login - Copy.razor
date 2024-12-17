@@ -1,0 +1,107 @@
+﻿@page "/Login-redirect"
+@using RZA_AR.Models
+@using RZA_AR.utilities
+@using RZA_AR.Services
+@inject CustomerService CustomerService
+@inject NavigationManager NavigationManager
+@inject UserSession UserSession
+@rendermode InteractiveServer
+
+
+    <div class="login-page">
+        <h3 class="login-title">This page is currenctly unaccessible :/ <i class="bi bi-paw-fill"></i></h3>
+        <div class="login-container">
+            <img src="https://animalsymbo.com/wp-content/uploads/2024/09/what-does-a-gecko-mean-spiritually-1024x536.jpg" alt="gecko image" class="background-image">
+            <div class="form-overlay">
+                <div class="form-group">
+                    <label>Please log into an account before accessing this page</label>
+                </div>
+
+            <button class="login-button" @onclick="RedirectToLogin">
+                    Ok
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+<style>
+    .login-page {
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    background-color: #a7cc4b;
+    }
+
+    .login-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 50px;
+    }
+
+    .login-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    background-color: #a7cc4b;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    }
+
+    .background-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0 15px 15px 0; /* Rounded edges on the right side */
+    }
+
+    .form-overlay {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    background-color: rgba(0, 70, 0, 0.6); /* Dark green with transparency */
+    padding: 20px;
+    border-radius: 10px 10px 10px 10px; /* Rounded edges on the left side */
+    width: 250px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+
+    .form-group {
+    margin-bottom: 15px;
+    }
+
+    .login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007E42; /* Dark green */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    }
+
+    .login-button i {
+    margin-left: 5px;
+    }
+
+    .login-button:hover {
+        background-color: #004014; /* Darker green on hover */
+    }
+</style>
+
+@code {
+
+    private void RedirectToLogin()
+    {
+        NavigationManager.NavigateTo("/login");
+    }
+}
